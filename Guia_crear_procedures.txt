@@ -1,0 +1,26 @@
+
+-- MSSQL
+
+CREATE PROCEDURE NombreDelProcedure
+    @param1 INT,
+    @param2 VARCHAR(50)
+AS
+BEGIN
+    SELECT *
+    FROM MiTabla
+    WHERE id = @param1
+      AND nombre = @param2
+END
+GO
+
+
+-- MYSQL 
+
+DELIMITER $$
+
+CREATE PROCEDURE nombreDelProcedure()
+BEGIN
+    -- tu código aquí
+END $$
+
+DELIMITER ;

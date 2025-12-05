@@ -1,0 +1,11 @@
+pe\edu\pucp\transitsoft\dominio\dao\InfraccionDAO.class
+pe\edu\pucp\transitsoft\dominio\dao\PropietarioDAO.class
+pe\edu\pucp\transitsoft\dao\IDAO.class
+pe\edu\pucp\transitsoft\dominio\impl\InfraccionImpl.class
+pe\edu\pucp\transitsoft\dominio\impl\PropietarioImpl.class
+pe\edu\pucp\transitsoft\dominio\impl\VehiculoImpl.class
+pe\edu\pucp\transitsoft\dominio\dao\VehiculoDAO.class
+pe\edu\pucp\transitsoft\dominio\impl\CamaraImpl.class
+pe\edu\pucp\transitsoft\dominio\impl\CapturaImpl.class
+pe\edu\pucp\transitsoft\dominio\dao\CamaraDAO.class
+pe\edu\pucp\transitsoft\dominio\dao\CapturaDAO.class

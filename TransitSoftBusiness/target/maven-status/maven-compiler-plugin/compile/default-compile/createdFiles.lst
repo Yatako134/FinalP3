@@ -1,0 +1,11 @@
+pe\edu\pucp\transitsoft\domimio\bo\IPropietarioBO.class
+pe\edu\pucp\transitsoft\domimio\boi\CapturaBOImpl.class
+pe\edu\pucp\transitsoft\domimio\boi\PropietarioBOImpl.class
+pe\edu\pucp\transitsoft\domimio\bo\ICapturaBO.class
+pe\edu\pucp\transitsoft\bo\IBaseBO.class
+pe\edu\pucp\transitsoft\domimio\boi\CamaraBOImpl.class
+pe\edu\pucp\transitsoft\domimio\bo\IVehiculoBO.class
+pe\edu\pucp\transitsoft\domimio\boi\VehiculoBOImpl.class
+pe\edu\pucp\transitsoft\domimio\boi\InfraccionBOImpl.class
+pe\edu\pucp\transitsoft\domimio\bo\IinfraccionBO.class
+pe\edu\pucp\transitsoft\domimio\bo\ICamaraBO.class

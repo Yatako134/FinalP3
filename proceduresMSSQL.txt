@@ -1,0 +1,163 @@
+USE transitsoft;
+GO
+
+------------------------------------------------------------
+-- PROPIETARIO
+------------------------------------------------------------
+
+-- DROPS
+IF OBJECT_ID('insertarPropietario', 'P') IS NOT NULL DROP PROCEDURE insertarPropietario;
+IF OBJECT_ID('modificarPropietario', 'P') IS NOT NULL DROP PROCEDURE modificarPropietario;
+IF OBJECT_ID('eliminarPropietario', 'P') IS NOT NULL DROP PROCEDURE eliminarPropietario;
+IF OBJECT_ID('obtenerXIDPropietario', 'P') IS NOT NULL DROP PROCEDURE obtenerXIDPropietario;
+IF OBJECT_ID('ListarPropietariosTodos', 'P') IS NOT NULL DROP PROCEDURE ListarPropietariosTodos;
+GO
+
+
+-- INSERTAR
+CREATE PROCEDURE insertarPropietario
+    @_id INT OUTPUT,
+    @_dni VARCHAR(10),
+    @_nombres VARCHAR(50),
+    @_apellidos VARCHAR(50),
+    @_direccion VARCHAR(100)
+AS
+BEGIN
+    INSERT INTO propietario (dni, nombres, apellidos, direccion)
+    VALUES (@_dni, @_nombres, @_apellidos, @_direccion);
+
+    SET @_id = SCOPE_IDENTITY();
+END;
+GO
+
+
+-- MODIFICAR
+CREATE PROCEDURE modificarPropietario
+    @_id INT,
+    @_dni VARCHAR(10),
+    @_nombres VARCHAR(50),
+    @_apellidos VARCHAR(50),
+    @_direccion VARCHAR(100)
+AS
+BEGIN
+    UPDATE propietario
+    SET dni = @_dni,
+        nombres = @_nombres,
+        apellidos = @_apellidos,
+        direccion = @_direccion
+    WHERE id = @_id;
+END;
+GO
+
+
+-- ELIMINAR
+CREATE PROCEDURE eliminarPropietario
+    @_id INT
+AS
+BEGIN
+    DELETE FROM propietario WHERE id = @_id;
+END;
+GO
+
+
+-- OBTENER POR ID
+CREATE PROCEDURE obtenerXIDPropietario
+    @_id INT
+AS
+BEGIN
+    SELECT id, dni, nombres, apellidos, direccion
+    FROM propietario
+    WHERE id = @_id;
+END;
+GO
+
+
+-- LISTAR TODOS
+CREATE PROCEDURE ListarPropietariosTodos
+AS
+BEGIN
+    SELECT id, dni, nombres, apellidos, direccion
+    FROM propietario;
+END;
+GO
+
+
+------------------------------------------------------------
+-- VEHICULO
+------------------------------------------------------------
+
+-- DROPS
+IF OBJECT_ID('insertarVehiculo', 'P') IS NOT NULL DROP PROCEDURE insertarVehiculo;
+IF OBJECT_ID('modificarVehiculo', 'P') IS NOT NULL DROP PROCEDURE modificarVehiculo;
+IF OBJECT_ID('eliminarVehiculo', 'P') IS NOT NULL DROP PROCEDURE eliminarVehiculo;
+IF OBJECT_ID('obtenerXIDVehiculo', 'P') IS NOT NULL DROP PROCEDURE obtenerXIDVehiculo;
+IF OBJECT_ID('ListarVehiculosTodos', 'P') IS NOT NULL DROP PROCEDURE ListarVehiculosTodos;
+GO
+
+
+-- INSERTAR
+CREATE PROCEDURE insertarVehiculo
+    @_id INT OUTPUT,
+    @_placa CHAR(7),
+    @_marca VARCHAR(20),
+    @_modelo VARCHAR(20),
+    @_anho INT
+AS
+BEGIN
+    INSERT INTO vehiculo (placa, marca, modelo, anho)
+    VALUES (@_placa, @_marca, @_modelo, @_anho);
+
+    SET @_id = SCOPE_IDENTITY();
+END;
+GO
+
+
+-- MODIFICAR
+CREATE PROCEDURE modificarVehiculo
+    @_id INT,
+    @_placa CHAR(7),
+    @_marca VARCHAR(20),
+    @_modelo VARCHAR(20),
+    @_anho INT
+AS
+BEGIN
+    UPDATE vehiculo
+    SET placa = @_placa,
+        marca = @_marca,
+        modelo = @_modelo,
+        anho = @_anho
+    WHERE id = @_id;
+END;
+GO
+
+
+-- ELIMINAR
+CREATE PROCEDURE eliminarVehiculo
+    @_id INT
+AS
+BEGIN
+    DELETE FROM vehiculo WHERE id = @_id;
+END;
+GO
+
+
+-- OBTENER POR ID
+CREATE PROCEDURE obtenerXIDVehiculo
+    @_id INT
+AS
+BEGIN
+    SELECT id, placa, marca, modelo, anho
+    FROM vehiculo
+    WHERE id = @_id;
+END;
+GO
+
+
+-- LISTAR TODOS
+CREATE PROCEDURE ListarVehiculosTodos
+AS
+BEGIN
+    SELECT id, placa, marca, modelo, anho
+    FROM vehiculo;
+END;
+GO

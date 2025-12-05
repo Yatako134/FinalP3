@@ -1,0 +1,134 @@
+use transitsoft;
+
+
+DROP PROCEDURE IF EXISTS insertarPropietario;
+DROP PROCEDURE IF EXISTS modificarPropietario;
+DROP PROCEDURE IF EXISTS eliminarPropietario;
+DROP PROCEDURE IF EXISTS obtenerXIDPropietario;
+DROP PROCEDURE IF EXISTS ListarPropietariosTodos;
+
+DROP PROCEDURE IF EXISTS insertarVehiculo;
+DROP PROCEDURE IF EXISTS modificarVehiculo;
+DROP PROCEDURE IF EXISTS eliminarVehiculo;
+DROP PROCEDURE IF EXISTS obtenerXIDVehiculo;
+DROP PROCEDURE IF EXISTS ListarVehiculosTodos;
+
+DROP PROCEDURE IF EXISTS modificarEstadoCaptura;
+-- PROPIETARIO
+
+-- INSERTAR
+DELIMITER $
+CREATE PROCEDURE insertarPropietario(
+	OUT _id INT,
+    IN 	_dni VARCHAR(10),
+    IN	_nombres VARCHAR(50),
+    IN _apellidos VARCHAR(50),
+    IN _direccion VARCHAR(100)
+)
+BEGIN
+    INSERT INTO propietario(dni,nombres,apellidos,direccion) 
+    VALUES(_dni,_nombres,_apellidos,_direccion);
+    SET _id = @@last_insert_id;
+END$
+
+-- MODIFICAR
+DELIMITER $
+CREATE PROCEDURE modificarPropietario(
+	IN _id INT,
+    IN 	_dni VARCHAR(10),
+    IN	_nombres VARCHAR(50),
+    IN _apellidos VARCHAR(50),
+    IN _direccion VARCHAR(100)
+)
+BEGIN
+	UPDATE propietario SET dni = _dni , nombres = _nombres ,
+    apellidos = _apellidos , direccion = _direccion 
+    WHERE id = _id;
+END$
+
+-- ELIMINAR
+DELIMITER $
+CREATE PROCEDURE eliminarPropietario(
+	IN _id INT
+)
+BEGIN
+	DELETE FROM propietario WHERE id = _id;
+END$
+
+-- OBTENER POR ID
+
+DELIMITER $
+CREATE PROCEDURE obtenerXIDPropietario(
+	IN _id INT
+)
+BEGIN
+	SELECT id, dni, nombres, apellidos, direccion FROM propietario
+    WHERE id = _id;
+END$
+
+-- LISTAR TODOS
+DELIMITER $
+CREATE PROCEDURE ListarPropietariosTodos()
+BEGIN
+    SELECT p.id, p.dni, p.nombres, p.apellidos, p.direccion
+    FROM propietario p;
+END$
+
+-- VEHICULO
+
+-- INSERTAR
+DELIMITER $
+CREATE PROCEDURE insertarVehiculo(
+	OUT _id INT,
+    IN 	_placa VARCHAR(7),
+    IN	_marca VARCHAR(20),
+    IN _modelo VARCHAR(20),
+    IN _anho INT
+)
+BEGIN
+    INSERT INTO vehiculo(placa,marca,modelo,anho) 
+    VALUES(_placa,_marca,_modelo,_anho);
+    SET _id = @@last_insert_id;
+END$
+
+-- MODIFICAR
+DELIMITER $
+CREATE PROCEDURE modificarVehiculo(
+	IN _id INT,
+    IN 	_placa VARCHAR(7),
+    IN	_marca VARCHAR(20),
+    IN _modelo VARCHAR(20),
+    IN _anho INT
+)
+BEGIN
+	UPDATE vehiculo SET placa = _placa , marca = _marcar, modelo = _modelo, anho = _anho
+    WHERE id = _id;
+END$
+
+-- ELIMINAR
+DELIMITER $
+CREATE PROCEDURE eliminarVehiculo(
+	IN _id INT
+)
+BEGIN
+	DELETE FROM vehiculo WHERE id = _id;
+END$
+
+-- OBTENER POR ID
+
+DELIMITER $
+CREATE PROCEDURE obtenerXIDVehiculo(
+	IN _id INT
+)
+BEGIN
+	SELECT id, placa,marca,modelo,anho FROM vehiculo
+    WHERE id = _id;
+END$
+
+-- LISTAR TODOS
+DELIMITER $
+CREATE PROCEDURE ListarVehiculosTodos()
+BEGIN
+    SELECT *
+    FROM vehiculo;
+END$
